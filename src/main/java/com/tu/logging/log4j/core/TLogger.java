@@ -9,10 +9,7 @@ import org.apache.logging.log4j.message.MessageFactory;
 import org.apache.logging.log4j.util.PropertiesUtil;
 
 import java.lang.ref.SoftReference;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.Executors;
@@ -48,7 +45,7 @@ public class TLogger extends Logger {
         PropertiesUtil propertiesUtil = new PropertiesUtil(PROPERTIES_FILE);
         LENGTH = propertiesUtil.getIntegerProperty(PROPERTY_LENGTH, 50);
         WRITE_LEVEL = propertiesUtil.getIntegerProperty(PROPERTY_WRITE_LEVEL, Level.ERROR.intLevel());
-        ADD_LEVEL = propertiesUtil.getIntegerProperty(PROPERTY_ADD_LEVEL, Level.DEBUG.intLevel());
+        ADD_LEVEL = propertiesUtil.getIntegerProperty(PROPERTY_ADD_LEVEL, Level.INFO.intLevel());
         SWITCH = propertiesUtil.getBooleanProperty(PROPERTY_SWITCH, false);
         EXPIRE_TIME = propertiesUtil.getIntegerProperty(PROPERTY_EXPIRE_TIME, 10);
         Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(new Thread() {
@@ -71,7 +68,7 @@ public class TLogger extends Logger {
             }
         }, EXPIRE_TIME, EXPIRE_TIME, TimeUnit.SECONDS);
     }
-
+    
     /**
      * The constructor.
      *
