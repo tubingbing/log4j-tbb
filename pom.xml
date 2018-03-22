@@ -27,7 +27,6 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>log4j-tbb-1.0</finalName>
     <resources>
       <resource>
         <directory>${project.basedir}/src/main/resources</directory>
